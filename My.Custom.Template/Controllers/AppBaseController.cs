@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using My.Custom.Template.ResultPattern;
 using Serilog;
@@ -8,61 +11,43 @@ namespace My.Custom.Template.Controllers
     [ApiController]
     public abstract class AppBaseController : ControllerBase
     {
-        /// <summary>
-        /// Handles the result, returning an Ok result if successful or a ProblemDetails result for errors.
-        /// </summary>
-        /// <typeparam name="T">The type of the result value.</typeparam>
-        /// <param name="result">The result to process.</param>
-        /// <param name="successResult">Optional custom success result.</param>
-        /// <param name="errorResult">Optional custom error result.</param>
-        /// <returns>IActionResult representing either success or failure.</returns>
-        protected IActionResult ResultOf<T>(Result<T> result, IActionResult? successResult = null)
+        protected IActionResult ResultOf<T>(Result<T> result, IActionResult? successResult = null, IActionResult? errorResult = null)
         {
             return result.IsSuccess 
                 ? successResult ?? Ok(result.Value) 
-                : Problem(result);
+                : errorResult ?? Problem(result);
         }
 
-        /// <summary>
-        /// Generates a ProblemDetails response based on the given Result<T>.
-        /// </summary>
-        /// <typeparam name="T">The type of the result value.</typeparam>
-        /// <param name="result">The failed result containing error information.</param>
-        /// <returns>IActionResult with ProblemDetails.</returns>
         private IActionResult Problem<T>(Result<T> result)
         {
-            if (result.IsSuccess || result.Error == null)
+            if (result.IsSuccess || result.Errors == null || !result.Errors.Any())
             {
                 return Problem();
             }
 
             // Log detailed error information
-            Log.Warning("Error encountered: {Error}, Code: {Code}, StatusCode: {StatusCode}", result.Error.Message, result.Error.Code, result.Error.StatusCode);
-
-            // Handle validation errors specifically (Status Code 400)
-            if (result.Error.StatusCode == StatusCodes.Status400BadRequest)
+            foreach (var error in result.Errors)
             {
-                return ValidationProblem(new List<string> { result.Error.Message });
+                Log.Warning("Error encountered: {Message}, Code: {Code}, StatusCode: {StatusCode}",
+                    error.Message, error.Code, error.StatusCode);
             }
 
+            
             // Set custom HTTP context items for error tracking/logging if needed
-            HttpContext.Items["Error"] = result.Error;
+            HttpContext.Items["Errors"] = result.Errors;
 
-            // Return detailed ProblemDetails response
+            // For simplicity, take the first error to generate ProblemDetails
+
+            var statusCode = result.Errors.MaxBy(error => error.StatusCode).StatusCode;
             return Problem(
-                statusCode: result.Error.StatusCode,
-                title: GetTitleForStatusCode(result.Error.StatusCode),
-                detail: result.Error.Message,
+                statusCode: statusCode,
+                title: GetTitleForStatusCode(statusCode),
+                detail: string.Join(", ", result.Errors.Select(error => error.Message)),
                 instance: HttpContext.TraceIdentifier
             );
         }
 
-        /// <summary>
-        /// Provides a descriptive title based on the HTTP status code.
-        /// </summary>
-        /// <param name="statusCode">The HTTP status code.</param>
-        /// <returns>A string representing the title for the given status code.</returns>
-        private static string GetTitleForStatusCode(int? statusCode)
+        private static string GetTitleForStatusCode(int statusCode)
         {
             return statusCode switch
             {
@@ -75,21 +60,6 @@ namespace My.Custom.Template.Controllers
                 _ => "An Unexpected Error Occurred"
             };
         }
-
-        /// <summary>
-        /// Converts a list of validation errors to a ValidationProblemDetails response.
-        /// </summary>
-        /// <param name="errorMessages">A list of validation error messages.</param>
-        /// <returns>An IActionResult with ValidationProblemDetails.</returns>
-        private IActionResult ValidationProblem(List<string> errorMessages)
-        {
-            var modelState = new ModelStateDictionary();
-            foreach (var error in errorMessages)
-            {
-                modelState.AddModelError(string.Empty, error);
-            }
-
-            return ValidationProblem(modelState);
-        }
+        
     }
 }

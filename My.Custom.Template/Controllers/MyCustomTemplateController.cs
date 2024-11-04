@@ -1,29 +1,26 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using My.Custom.Template.Api.MyCustomTemplateController.GetWeatherForecast;
 
 namespace My.Custom.Template.Controllers;
 
 [Route("[controller]")]
 public class MyCustomTemplateController : AppBaseController
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
-    private readonly ILogger<MyCustomTemplateController> _logger;
-    private readonly IExampleService _exampleService;
 
-    public MyCustomTemplateController(ILogger<MyCustomTemplateController> logger, IExampleService exampleService)
+    private readonly IMediator _mediator;
+
+    public MyCustomTemplateController(IMediator mediator)
     {
-        _logger = logger;
-        _exampleService = exampleService;
+        _mediator = mediator;
     }
-
+    
     [HttpGet(Name = "GetWeatherForecast")]
-    public async Task<IActionResult> Get()
+    [ProducesResponseType(typeof(WeatherForecast), 200)]
+    public async Task<IActionResult> GetWeatherForecast()
     {
-        throw new Exception("This is an exception");
-        var query = await _exampleService.GetWeatherForecastAsync();
+        var query = await _mediator.Send(new GetWeatherForecastQuery(0));
         return ResultOf(query);
 
     }

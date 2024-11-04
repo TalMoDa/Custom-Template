@@ -7,6 +7,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAppMediatR();
 builder.Services.AddServices();
 builder.Host.UseSerilog((context, configuration) => { configuration.ReadFrom.Configuration(context.Configuration); });
 builder.Services.UseProblemDetails();
