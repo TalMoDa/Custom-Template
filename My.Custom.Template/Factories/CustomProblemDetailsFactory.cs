@@ -93,9 +93,11 @@ public class CustomProblemDetailsFactory : ProblemDetailsFactory
             // Show detailed error information in development mode
             if (_environment.IsDevelopment())
             {
+                problemDetails.Extensions["exceptionMessage"] = exception.Message;
                 problemDetails.Extensions["exceptionType"] = exception.GetType().Name;
                 problemDetails.Extensions["stackTrace"] = exception.StackTrace;
                 problemDetails.Extensions["innerException"] = exception.InnerException?.Message;
+
             }
             else
             {
