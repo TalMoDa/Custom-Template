@@ -1,6 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using My.Custom.Template.Api.MyCustomTemplateController.GetWeatherForecast;
+using My.Custom.Template.Api.MyCustomTemplateController.GetUser;
+using My.Custom.Template.Dto;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace My.Custom.Template.Controllers;
 
@@ -16,12 +18,21 @@ public class MyCustomTemplateController : AppBaseController
         _mediator = mediator;
     }
     
-    [HttpGet(Name = "GetWeatherForecast")]
-    [ProducesResponseType(typeof(WeatherForecast), 200)]
-    public async Task<IActionResult> GetWeatherForecast()
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    /// <response code="200">Returns the user with the specified id.</response>
+    [HttpGet]
+    [Route("/user/{id}")]
+    [SwaggerOperation(Summary = "Get user by id")]
+    [SwaggerResponse(200, "Returns the user with the specified id.", typeof(UserDto))]
+    
+    public async Task<IActionResult> GetUser([FromRoute (Name = "id")] int id, CancellationToken cancellationToken)
     {
-        var query = await _mediator.Send(new GetWeatherForecastQuery(0));
+        var query = await _mediator.Send(new GetUserQuery(id), cancellationToken);
         return ResultOf(query);
-
     }
+
 }
