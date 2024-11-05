@@ -6,13 +6,13 @@ using My.Custom.Template.Data.Entities.EF;
 
 namespace My.Custom.Template.Data
 {
-    public partial class CustomDbContext : DbContext
+    public partial class AppDbContext : DbContext
     {
-        public CustomDbContext()
+        public AppDbContext()
         {
         }
 
-        public CustomDbContext(DbContextOptions<CustomDbContext> options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }

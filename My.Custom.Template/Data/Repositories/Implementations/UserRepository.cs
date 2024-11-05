@@ -6,7 +6,7 @@ namespace My.Custom.Template.Data.Repositories.Implementations;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    public UserRepository(CustomDbContext context) : base(context)
+    public UserRepository(AppDbContext context) : base(context)
     {
     }
 

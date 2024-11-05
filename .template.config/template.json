@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Tal Moshe Dayan",
+  "classifications": [
+    "Web",
+    "API"
+  ],
+  "identity": "My.Custom.Template",
+  "name": "TalMoDa Custom Web API Template",
+  "description": "A custom .NET 6 Web API template by Tal Moshe Dayan.",
+  "shortName": "mycustomtemplate",
+  "sourceName": "My.Custom.Template",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project",
+      "datatype": "string",
+      "defaultValue": "net6.0"
+    },
+    "DbContextName": {
+      "type": "parameter",
+      "description": "The name of the DbContext that will be used in the project template.",
+      "datatype": "string",
+      "defaultValue": "AppDbContext",
+      "replaces": "AppDbContext"
+    },
+    "ConnectionStrings__DefaultConnection": {
+      "type": "parameter",
+      "description": "The connection string for the database.",
+      "datatype": "string",
+      "defaultValue": "Server=(LocalDB)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;MultipleActiveResultSets=true",
+      "replaces": "Server=(LocalDB)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+    },
+    "MyCustomControllerName": {
+      "type": "parameter",
+      "description": "The name of the controller that will be created in the project template.",
+      "datatype": "string",
+      "defaultValue": "MyCustomController",
+      "replaces": "MyCustomController"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "My.Custom.Template/My.Custom.Template.csproj"
+    }
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!IsWindows)",
+          "exclude": [
+            "**/*.bat"
+          ]
+        },
+        {
+          "condition": "(!IsLinux)",
+          "exclude": [
+            "**/*.sh"
+          ]
+        }
+      ]
+    }
+  ]
+}

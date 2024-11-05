@@ -16,7 +16,7 @@ public static class DataDependencyInjection
     {
         var connectionString = services.BuildServiceProvider().GetRequiredService<IOptions<ConnectionStrings>>().Value.DefaultConnection;
         services.AddScoped<IDbConnection>(_ => new SqlConnection(connectionString));
-        services.AddDbContext<CustomDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
         services.AddRepositories();
         return services;
     }

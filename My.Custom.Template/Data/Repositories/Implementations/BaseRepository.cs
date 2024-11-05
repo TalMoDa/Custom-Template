@@ -5,9 +5,9 @@ namespace My.Custom.Template.Data.Repositories.Implementations;
 
 public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
-    protected readonly CustomDbContext _context;
+    protected readonly AppDbContext _context;
 
-    protected BaseRepository(CustomDbContext context)
+    protected BaseRepository(AppDbContext context)
     {
         _context = context;
     }

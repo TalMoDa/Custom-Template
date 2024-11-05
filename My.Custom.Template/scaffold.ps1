@@ -4,7 +4,7 @@ $provider = "Microsoft.EntityFrameworkCore.SqlServer"
 $outputDirTemp = "Data\Entities\EF2"
 $outputDirMain = "Data\Entities\EF"
 $contextDir = "Data"
-$contextName = "CustomDbContext"
+$contextName = "AppDbContext"
 $project = "My.Custom.Template.csproj"
 $namespaceOld = "My.Custom.Template.Data.Entities.EF2"
 $namespaceNew = "My.Custom.Template.Data.Entities.EF"
@@ -113,7 +113,7 @@ Show-Loading
 Write-Host "Updating namespaces in files within '$outputDirMain'"
 Update-FileNamespace -directory $outputDirMain -oldNamespace $namespaceOld -newNamespace $namespaceNew
 
-# Step 6: Update namespace in CustomDbContext.cs
+# Step 6: Update namespace in AppDbContext.cs
 Show-Loading
 $contextFilePath = "$contextDir\$contextName.cs"
 Write-Host "Updating namespace in '$contextFilePath'"
