@@ -29,7 +29,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, Result<UserDto>
     }
     public async Task<Result<UserDto>> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetAsync(request.Id, cancellationToken);
+        var user = await _userRepository.GetUserAsNoTrackingAsync(request.Id, cancellationToken);
         
         if (user is null)
         {

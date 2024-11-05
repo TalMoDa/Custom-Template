@@ -4,4 +4,5 @@ namespace My.Custom.Template.Data.Repositories.Interfaces;
 
 public interface IUserRepository : IBaseRepository<User>
 {
+    Task<User> GetUserAsNoTrackingAsync(int id, CancellationToken cancellationToken);
 }

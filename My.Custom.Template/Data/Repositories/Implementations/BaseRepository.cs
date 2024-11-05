@@ -5,7 +5,7 @@ namespace My.Custom.Template.Data.Repositories.Implementations;
 
 public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
-    private readonly CustomDbContext _context;
+    protected readonly CustomDbContext _context;
 
     protected BaseRepository(CustomDbContext context)
     {
@@ -17,12 +17,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         return await _context.Set<T>().FindAsync(new[] { id }, cancellationToken: cancellationToken);
 
     }
-
     public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _context.Set<T>().ToListAsync(cancellationToken);
     }
-
+    
     public async Task AddAsync(T entity, CancellationToken cancellationToken)
     {
         await _context.Set<T>().AddAsync(entity, cancellationToken);
