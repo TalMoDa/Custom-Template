@@ -1,11 +1,11 @@
 -- Create Database (if not already existing)
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'MyDatabase')
     BEGIN
-        CREATE DATABASE MyDb;
+        CREATE DATABASE {MyDb};
     END
 GO
 
-USE MyDb;
+USE {MyDb};
 GO
 
 -- Create Examples Table

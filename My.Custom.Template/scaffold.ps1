@@ -1,5 +1,5 @@
 # Set up variables
-$connectionString = '"Server=(LocalDB)\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;MultipleActiveResultSets=true"'
+$connectionString = '"{SQL_CONNECTION_STRING}"'
 $provider = "Microsoft.EntityFrameworkCore.SqlServer"
 $outputDirTemp = "Data\Entities\EF2"
 $outputDirMain = "Data\Entities\EF"
