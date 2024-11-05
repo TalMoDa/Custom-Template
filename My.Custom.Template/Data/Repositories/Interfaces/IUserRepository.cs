@@ -1,4 +1,5 @@
 ﻿using My.Custom.Template.Data.Entites;
+using My.Custom.Template.Data.Entites.EF;
 
 namespace My.Custom.Template.Data.Repositories.Interfaces;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace My.Custom.Template.ResultPattern.Extensions
+﻿namespace My.Custom.Template.Common.Models.ResultPattern.Extensions
 {
     public static class ResultExtensions
     {

@@ -1,8 +1,6 @@
-using My.Custom.Template;
+using My.Custom.Template.Build.DependencyInjection;
 using My.Custom.Template.Build.Logger;
-using My.Custom.Template.DependencyInjection;
-using My.Custom.Template.RequestPipeline;
-using My.Custom.Template.Services.Implementations;
+using My.Custom.Template.Build.RequestPipeline;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,5 +1,5 @@
 ﻿
-namespace My.Custom.Template.RequestPipeline;
+namespace My.Custom.Template.Build.RequestPipeline;
 
 public static class WebApplicationExtensions
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using My.Custom.Template.ResultPattern;
+using My.Custom.Template.Common.Models.ResultPattern;
 using Serilog;
 
 namespace My.Custom.Template.Controllers

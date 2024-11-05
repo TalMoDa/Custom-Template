@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
 using My.Custom.Template.Factories;
 
-namespace My.Custom.Template.DependencyInjection;
+namespace My.Custom.Template.Build.DependencyInjection;
 
 public static class ErrorHandlingDependencyInjection
 {

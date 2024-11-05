@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
+using My.Custom.Template.Common.Models.ResultPattern;
 using My.Custom.Template.Data.Repositories.Interfaces;
 using My.Custom.Template.Dto;
-using My.Custom.Template.ResultPattern;
 
 namespace My.Custom.Template.Api.MyCustomTemplateController.GetUser;
 

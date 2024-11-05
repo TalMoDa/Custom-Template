@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using My.Custom.Template.Data.Entites;
+using My.Custom.Template.Data.Entites.EF;
 using My.Custom.Template.Data.Repositories.Interfaces;
 
-namespace My.Custom.Template.Data.Repositories;
+namespace My.Custom.Template.Data.Repositories.Implementations;
 
 public class UserRepository : IUserRepository
 {

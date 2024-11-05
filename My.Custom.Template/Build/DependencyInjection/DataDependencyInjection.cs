@@ -3,11 +3,11 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using My.Custom.Template.Data;
-using My.Custom.Template.Data.Repositories;
+using My.Custom.Template.Data.Repositories.Implementations;
 using My.Custom.Template.Data.Repositories.Interfaces;
 using My.Custom.Template.Settings;
 
-namespace My.Custom.Template.DependencyInjection;
+namespace My.Custom.Template.Build.DependencyInjection;
 
 public static class DataDependencyInjection
 {

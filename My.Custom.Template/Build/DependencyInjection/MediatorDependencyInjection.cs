@@ -3,8 +3,7 @@ using FluentValidation;
 using MediatR;
 using My.Custom.Template.Pipelines;
 
-
-namespace My.Custom.Template.DependencyInjection;
+namespace My.Custom.Template.Build.DependencyInjection;
 
 public static class MediatorDependencyInjection
 {

@@ -1,4 +1,4 @@
-﻿namespace My.Custom.Template.ResultPattern;
+﻿namespace My.Custom.Template.Common.Models.ResultPattern;
 
 public class Error
 {

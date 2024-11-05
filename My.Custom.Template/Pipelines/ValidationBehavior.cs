@@ -1,7 +1,7 @@
 ﻿
 using FluentValidation;
 using MediatR;
-using My.Custom.Template.ResultPattern;
+using My.Custom.Template.Common.Models.ResultPattern;
 
 namespace My.Custom.Template.Pipelines;
 

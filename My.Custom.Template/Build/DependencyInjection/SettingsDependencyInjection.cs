@@ -1,6 +1,6 @@
 ﻿using My.Custom.Template.Settings;
 
-namespace My.Custom.Template.DependencyInjection;
+namespace My.Custom.Template.Build.DependencyInjection;
 
 public static class SettingsDependencyInjection 
 {
