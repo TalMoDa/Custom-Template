@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageVersion>1.0.0</PackageVersion>
+        <PackageId>TalMoDa.Custom.Template</PackageId>
+        <Title>Tal Moshe Dayan's Custom Templates</Title>
+        <Authors>Tal Moshe Dayan</Authors>
+        <Description>A custom .NET 6 Web API template by Tal Moshe Dayan.</Description>
+        <PackageTags>dotnet-new;template;web;api</PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
+
+        <!-- Include content in the pack and configure content folders -->
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include=".template.config\**\*" Exclude=".template.config\**\bin\**;content\**\obj\**" />
+        <Content Include="My.Custom.Template\**\*" Exclude="My.Custom.Template\**\bin\**;**\obj\**" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+</Project>

@@ -5,7 +5,7 @@
     "Web",
     "API"
   ],
-  "identity": "My.Custom.Template",
+  "identity": "TalMoDa.Custom.Template",
   "name": "TalMoDa Custom Web API Template",
   "description": "A custom .NET 6 Web API template by Tal Moshe Dayan.",
   "shortName": "TalDayanCustomTemplate",
