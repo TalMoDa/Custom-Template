@@ -8,7 +8,7 @@
   "identity": "My.Custom.Template",
   "name": "TalMoDa Custom Web API Template",
   "description": "A custom .NET 6 Web API template by Tal Moshe Dayan.",
-  "shortName": "mycustomtemplate",
+  "shortName": "TalDayanCustomTemplate",
   "sourceName": "My.Custom.Template",
   "tags": {
     "language": "C#",
@@ -34,14 +34,14 @@
       "description": "The connection string for the database.",
       "datatype": "string",
       "defaultValue": "Server=(LocalDB)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;MultipleActiveResultSets=true",
-      "replaces": "Server=(LocalDB)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+      "replaces": "{SQL_CONNECTION_STRING}"
     },
     "MyCustomControllerName": {
       "type": "parameter",
       "description": "The name of the controller that will be created in the project template.",
       "datatype": "string",
-      "defaultValue": "MyCustomController",
-      "replaces": "MyCustomController"
+      "defaultValue": "MyCustomTemplate",
+      "replaces": "MyCustomTemplate"
     }
   },
   "primaryOutputs": [

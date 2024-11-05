@@ -8,8 +8,8 @@ GO
 USE MyDb;
 GO
 
--- Create Users Table
-CREATE TABLE Users (
+-- Create Examples Table
+CREATE TABLE Example (
                        Id INT IDENTITY(1,1) PRIMARY KEY,
                        Name NVARCHAR(MAX) NOT NULL
 );

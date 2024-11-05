@@ -1,3 +1,3 @@
 ﻿namespace My.Custom.Template.Dto;
 
-public record UserDto(int Id, string Name);
+public record ExampleDto(int Id, string Name);

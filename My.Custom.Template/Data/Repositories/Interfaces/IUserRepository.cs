@@ -2,7 +2,7 @@
 
 namespace My.Custom.Template.Data.Repositories.Interfaces;
 
-public interface IUserRepository : IBaseRepository<User>
+public interface IExampleRepository : IBaseRepository<Example>
 {
-    Task<User> GetUserAsNoTrackingAsync(int id, CancellationToken cancellationToken);
+    Task<Example> GetExampleAsNoTrackingAsync(int id, CancellationToken cancellationToken);
 }

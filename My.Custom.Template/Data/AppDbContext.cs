@@ -17,7 +17,7 @@ namespace My.Custom.Template.Data
         {
         }
 
-        public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<Example> Examples { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

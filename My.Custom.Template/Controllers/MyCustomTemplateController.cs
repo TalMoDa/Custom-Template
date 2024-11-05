@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using My.Custom.Template.Api.MyCustomTemplateController.GetUser;
+using My.Custom.Template.Api.MyCustomTemplateController.GetExample;
 using My.Custom.Template.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -23,15 +23,15 @@ public class MyCustomTemplateController : AppBaseController
     /// </summary>
     /// <param name="id"></param>
     /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
-    /// <response code="200">Returns the user with the specified id.</response>
+    /// <response code="200">Returns the example with the specified id.</response>
     [HttpGet]
-    [Route("/user/{id}")]
-    [SwaggerOperation(Summary = "Get user by id")]
-    [SwaggerResponse(200, "Returns the user with the specified id.", typeof(UserDto))]
+    [Route("/example/{id}")]
+    [SwaggerOperation(Summary = "Get example by id")]
+    [SwaggerResponse(200, "Returns the example with the specified id.", typeof(ExampleDto))]
     
-    public async Task<IActionResult> GetUser([FromRoute (Name = "id")] int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetExample([FromRoute (Name = "id")] int id, CancellationToken cancellationToken)
     {
-        var query = await _mediator.Send(new GetUserQuery(id), cancellationToken);
+        var query = await _mediator.Send(new GetExampleQuery(id), cancellationToken);
         return ResultOf(query);
     }
 

@@ -4,39 +4,39 @@ using My.Custom.Template.Common.Models.ResultPattern;
 using My.Custom.Template.Data.Repositories.Interfaces;
 using My.Custom.Template.Dto;
 
-namespace My.Custom.Template.Api.MyCustomTemplateController.GetUser;
+namespace My.Custom.Template.Api.MyCustomTemplateController.GetExample;
 
 
 
-public record GetUserQuery(int Id) : IRequest<Result<UserDto>>;
+public record GetExampleQuery(int Id) : IRequest<Result<ExampleDto>>;
 
-public class getUserQueryValidator : AbstractValidator<GetUserQuery>
+public class getExampleQueryValidator : AbstractValidator<GetExampleQuery>
 {
-    public getUserQueryValidator()
+    public getExampleQueryValidator()
     {
         RuleFor(x => x.Id).GreaterThan(0).WithMessage("Id must be greater than 0");
     }
 }
 
 
-public class GetUserQueryHandler : IRequestHandler<GetUserQuery, Result<UserDto>>
+public class GetExampleQueryHandler : IRequestHandler<GetExampleQuery, Result<ExampleDto>>
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IExampleRepository _exampleRepository;
     
-    public GetUserQueryHandler(IUserRepository userRepository)
+    public GetExampleQueryHandler(IExampleRepository exampleRepository)
     {
-        _userRepository = userRepository;
+        _exampleRepository = exampleRepository;
     }
-    public async Task<Result<UserDto>> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ExampleDto>> Handle(GetExampleQuery request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetUserAsNoTrackingAsync(request.Id, cancellationToken);
+        var example = await _exampleRepository.GetExampleAsNoTrackingAsync(request.Id, cancellationToken);
         
-        if (user is null)
+        if (example is null)
         {
             return Error.NotFound($"User with id {request.Id} was not found");
         }
         
-        return new UserDto(user.Id, user.Name);
+        return new ExampleDto(example.Id, example.Name);
         
         
     }

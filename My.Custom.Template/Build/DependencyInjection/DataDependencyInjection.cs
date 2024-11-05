@@ -24,7 +24,7 @@ public static class DataDependencyInjection
     
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IExampleRepository, ExampleRepository>();
         return services;
     }
     

@@ -4,14 +4,14 @@ using My.Custom.Template.Data.Repositories.Interfaces;
 
 namespace My.Custom.Template.Data.Repositories.Implementations;
 
-public class UserRepository : BaseRepository<User>, IUserRepository
+public class ExampleRepository : BaseRepository<Example>, IExampleRepository
 {
-    public UserRepository(AppDbContext context) : base(context)
+    public ExampleRepository(AppDbContext context) : base(context)
     {
     }
 
-    public Task<User> GetUserAsNoTrackingAsync(int id, CancellationToken cancellationToken)
+    public Task<Example> GetExampleAsNoTrackingAsync(int id, CancellationToken cancellationToken)
     {
-        return _context.Set<User>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        return _context.Set<Example>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 }
