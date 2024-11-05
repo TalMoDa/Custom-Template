@@ -1,7 +1,11 @@
-﻿namespace My.Custom.Template.Data.Entities.EF;
+﻿using System;
+using System.Collections.Generic;
 
-public class User
+namespace My.Custom.Template.Data.Entities.EF
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    public partial class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+    }
 }
