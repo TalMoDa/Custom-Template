@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using My.Custom.Template.Data.Entites;
-using My.Custom.Template.Data.Entites.EF;
+using My.Custom.Template.Data.Entities.EF;
 
 namespace My.Custom.Template.Data;
 
